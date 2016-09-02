@@ -1,4 +1,3 @@
-```visual basic
 Attribute VB_Name = "VBAIndexMatch"
 Function VBALookup(Sheet As String, ID As Range, IDColName As String, Var As Range, VarRowNum As Integer) As Variant
 
@@ -49,4 +48,3 @@ Function VBALookup(Sheet As String, ID As Range, IDColName As String, Var As Ran
         End If
 
 End Function
-```
