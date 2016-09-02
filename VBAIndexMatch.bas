@@ -1,5 +1,5 @@
 Attribute VB_Name = "VBAIndexMatch"
-Function VBALookup(Sheet As String, ID As Range, IDColName As String, Var As Range, VarRowNum As Integer) As Variant
+Function VBALookup(Sheet As String, ID As Range, IDColName As String, Var As String, VarRowNum As Integer) As Variant
 
 'UDF designed to triangulate a data point from a separate sheet which contains an external link to a .csv or .txt delimited dataset
 'This function works in the following way: INDEX + MATCH variable column + MATCH ID column + MATCH ID within ID column
@@ -18,13 +18,11 @@ Function VBALookup(Sheet As String, ID As Range, IDColName As String, Var As Ran
     ColRange = Range(Datasheet.Cells(VarRowNum, 1), Datasheet.Cells(VarRowNum, LastColumn))
     MaxRange = Range(Cells(1, 1), Cells(LastRow, LastColumn)).Address
     
-    'Determine the lookup variable/table header name to search (given cell reference)
-    VarColName = Var.Value
     'Determine the dataset record identifier to search (given cell reference)
     Subject = ID.Value
             
     'Calculate column number for lookup
-    IndexColNum = WorksheetFunction.Match(VarColName, ColRange, 0)
+    IndexColNum = WorksheetFunction.Match(Var, ColRange, 0)
         'Here we are determining the position of the 'variable' column in question given the specified NAME of said column.. can be anywhere in the dataset
         IDColNum = WorksheetFunction.Match(IDColName, ColRange, 0)
             'Here we are determining the position of the 'identifier'/'reference number' column given the specified NAME of said column.. can be anywhere in the dataset
